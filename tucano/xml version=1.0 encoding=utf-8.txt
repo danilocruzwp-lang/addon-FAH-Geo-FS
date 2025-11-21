@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<airplane>
+  <!-- INFO DEL AVIÓN -->
+  <name>T-27 Tucano FAH</name>
+  <description>Embraer EMB-312 Tucano - Fuerza Aérea Hondureña</description>
+  <author>TuNombre</author>
+  <version>1.0</version>
+
+  <!-- MODELO 3D -->
+  <model>model.dae</model>
+  <sourceURL>/mnt/data/Copilot3D-f168214f-544b-4e92-a094-5cd48f00d905.glb</sourceURL>
+  <texture>texture.png</texture>
+  <thumbnail>thumbnail.png</thumbnail>
+
+  <!-- DIMENSIONES DEL TUCANO -->
+  <dimensions>
+    <length>9.9</length>
+    <wingspan>11.1</wingspan>
+    <height>3.4</height>
+  </dimensions>
+
+  <!-- MASA (kg) -->
+  <mass>
+    <empty>1810</empty>
+    <fuel>450</fuel>
+    <payload>300</payload>
+  </mass>
+
+  <!-- CENTRO DE GRAVEDAD -->
+  <centerOfGravity x="0.0" y="0.0" z="0.25"/>
+
+  <!-- MOTOR (turboprop PT6A-25C) -->
+  <engines>
+    <engine id="1">
+      <type>turboprop</type>
+      <position x="0.0" y="0.6" z="-2.2"/>
+      <thrust>750</thrust>
+      <propeller>
+        <diameter>2.1</diameter>
+        <blades>5</blades>
+      </propeller>
+    </engine>
+  </engines>
+
+  <!-- SUPERFICIES DE CONTROL -->
+  <controlSurfaces>
+    <surface name="left_aileron" type="aileron" factor="1.1" node="left_aileron_node"/>
+    <surface name="right_aileron" type="aileron" factor="1.1" node="right_aileron_node"/>
+    <surface name="elevator" type="elevator" factor="1.05" node="elevator_node"/>
+    <surface name="rudder" type="rudder" factor="1.0" node="rudder_node"/>
+    <surface name="left_flap" type="flap" factor="0.9" node="left_flap_node"/>
+    <surface name="right_flap" type="flap" factor="0.9" node="right_flap_node"/>
+  </controlSurfaces>
+
+  <!-- MODELO DE VUELO -->
+  <flightModel>
+    <liftFactor>1.1</liftFactor>
+    <dragFactor>0.95</dragFactor>
+    <maxSpeed>440</maxSpeed>          <!-- km/h -->
+    <stallSpeed>120</stallSpeed>
+    <maxAltitude>9500</maxAltitude>
+  </flightModel>
+
+  <!-- TREN DE ATERRIZAJE -->
+  <landingGear>
+    <nose>
+      <position x="0.0" y="0.6" z="1.6"/>
+      <retractable>false</retractable>
+      <node>nose_gear_node</node>
+    </nose>
+
+    <left>
+      <position x="-1.1" y="0.5" z="0.4"/>
+      <retractable>false</retractable>
+      <node>left_main_gear_node</node>
+    </left>
+
+    <right>
+      <position x="1.1" y="0.5" z="0.4"/>
+      <retractable>false</retractable>
+      <node>right_main_gear_node</node>
+    </right>
+  </landingGear>
+
+  <!-- CABINA / CÁMARA -->
+  <cockpit>
+    <pilotSeat x="0.0" y="1.35" z="1.0"/>
+    <camera>
+      <offset x="0.0" y="1.55" z="1.1"/>
+      <fov>78</fov>
+    </camera>
+  </cockpit>
+
+  <!-- EFECTOS -->
+  <effects>
+    <smokeEffect node="smoke_node" intensity="0.0"/>
+    <propwashEffect node="prop_node" intensity="0.8"/>
+  </effects>
+
+</airplane>

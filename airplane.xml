@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- model.xml para F-5E - plantilla creada a partir del archivo GLB subido.
+     NOTA: GeoFS espera normalmente un .dae (COLLADA). Si aún no conviertes el .glb a .dae,
+     puedes usar la etiqueta <sourceURL> para recordar la ubicación del GLB. -->
+<airplane>
+  <!-- Identificación -->
+  <name>F-5E FAH</name>
+  <description>F-5E Tiger II - Fuerza Aérea Hondureña (plantilla mod)</description>
+  <author>TuNombre</author>
+  <version>1.0</version>
+
+  <!-- Modelo:
+       - Cambia "model.dae" por la ruta a tu .dae si conviertes el GLB a COLLADA.
+       - He incluido sourceURL apuntando al GLB que subiste para referencia. -->
+  <model>model.dae</model>
+  <sourceURL>/mnt/data/8089d66a8a8748b2a4b049b3c06f6a02.glb</sourceURL>
+  <texture>texture.png</texture>
+  <thumbnail>thumbnail.png</thumbnail>
+
+  <!-- Dimensiones de referencia (metros) -->
+  <dimensions>
+    <length>14.72</length>    <!-- longitud típica F-5E -->
+    <wingspan>8.13</wingspan>
+    <height>4.12</height>
+  </dimensions>
+
+  <!-- Masa (kg) - valor aproximado, afina según comportamiento -->
+  <mass>
+    <empty>5100</empty>
+    <fuel>1200</fuel>
+    <payload>800</payload>
+  </mass>
+
+  <!-- Centro de gravedad (en metros relativo al origen del modelo) -->
+  <centerOfGravity x="0.0" y="0.0" z="0.5"/>
+
+  <!-- Motores: F-5E tiene 2 motores --> 
+  <engines>
+    <engine id="1">
+      <type>jet</type>
+      <position x="-0.35" y="0.8" z="-1.6"/>
+      <!-- Empuje en newtons (valor aproximado por motor) -->
+      <thrust>13000</thrust>
+      <afterburnerThrust>18000</afterburnerThrust>
+    </engine>
+
+    <engine id="2">
+      <type>jet</type>
+      <position x="0.35" y="0.8" z="-1.6"/>
+      <thrust>13000</thrust>
+      <afterburnerThrust>18000</afterburnerThrust>
+    </engine>
+  </engines>
+
+  <!-- Aerodinámica / controles -->
+  <controlSurfaces>
+    <surface name="left_aileron" type="aileron" factor="1.15" node="left_aileron_node"/>
+    <surface name="right_aileron" type="aileron" factor="1.15" node="right_aileron_node"/>
+    <surface name="elevator" type="elevator" factor="1.05" node="elevator_node"/>
+    <surface name="rudder" type="rudder" factor="1.00" node="rudder_node"/>
+    <!-- Flaps (si el modelo los tiene) -->
+    <surface name="left_flap" type="flap" factor="0.9" node="left_flap_node"/>
+    <surface name="right_flap" type="flap" factor="0.9" node="right_flap_node"/>
+  </controlSurfaces>
+
+  <!-- Parámetros de vuelo básicos (tuneables) -->
+  <flightModel>
+    <liftFactor>1.0</liftFactor>
+    <dragFactor>1.0</dragFactor>
+    <maxSpeed>1120</maxSpeed>         <!-- km/h (aprox Mach 0.9) -->
+    <stallSpeed>210</stallSpeed>      <!-- km/h aproximado -->
+    <maxAltitude>15200</maxAltitude>  <!-- metros approximados -->
+  </flightModel>
+
+  <!-- Tren de aterrizaje -->
+  <landingGear>
+    <nose>
+      <position x="0.0" y="0.9" z="3.0"/>
+      <retractable>true</retractable>
+      <node>nose_gear_node</node>
+    </nose>
+
+    <left>
+      <position x="-1.2" y="0.6" z="1.8"/>
+      <retractable>true</retractable>
+      <node>left_main_gear_node</node>
+    </left>
+
+    <right>
+      <position x="1.2" y="0.6" z="1.8"/>
+      <retractable>true</retractable>
+      <node>right_main_gear_node</node>
+    </right>
+
+    <!-- Animación de retracción: nombres de nodos/rotaciones pueden necesitar ajuste -->
+    <animation name="gear">
+      <node>gear_root_node</node>
+      <openRotation axis="x" angle="-90"/>
+      <closeRotation axis="x" angle="0"/>
+      <duration>1.2</duration>
+    </animation>
+  </landingGear>
+
+  <!-- Cabina / cámara -->
+  <cockpit>
+    <pilotSeat x="0.0" y="1.6" z="2.0"/>
+    <canopy node="canopy_node" openAngle="45"/>
+    <camera>
+      <offset x="0.0" y="1.9" z="2.1"/>
+      <fov>75</fov>
+    </camera>
+  </cockpit>
+
+  <!-- Sistemas (sonidos/efectos) -->
+  <effects>
+    <afterburnerEffect node="exhaust_node" intensity="1.0"/>
+    <smokeEffect node="smoke_node" intensity="0.0"/>
+  </effects>
+
+  <!-- Armamento (plantilla, si quieres añadir pods/underwing stores) -->
+  <stores>
+    <hardpoint id="L1" position x="-3.2" y="0.3" z="-0.5"/>
+    <hardpoint id="R1" position x="3.2"  y="0.3" z="-0.5"/>
+  </stores>
+
+  <!-- Notas para ajuste:
+       - Los nombres de nodos (node="...") son ejemplos. Reemplázalos por los nombres reales que tenga tu GLB/DAE.
+       - Si conviertes el GLB a DAE y el archivo resultante se llama distinto, cambia la etiqueta <model>.
+       - Ajusta <thrust>, <mass>, <liftFactor> y <dragFactor> para conseguir el comportamiento que quieras en GeoFS.
+  -->
+</airplane>

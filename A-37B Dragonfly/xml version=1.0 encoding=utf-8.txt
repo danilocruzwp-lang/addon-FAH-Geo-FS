@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<airplane>
+  <!-- INFO DEL AVIÓN -->
+  <name>A-37B Dragonfly FAH</name>
+  <description>Cessna A-37B Dragonfly - Fuerza Aérea Hondureña</description>
+  <author>TuNombre</author>
+  <version>1.0</version>
+
+  <!-- MODELO 3D -->
+  <!-- Cambia model.dae si luego conviertes el GLB a DAE -->
+  <model>model.dae</model>
+  <sourceURL>/mnt/data/Copilot3D-ffe31dbb-ae2a-4e8a-af75-8752c1b76b44.glb</sourceURL>
+  <texture>texture.png</texture>
+  <thumbnail>thumbnail.png</thumbnail>
+
+  <!-- DIMENSIONES DEL A-37 -->
+  <dimensions>
+    <length>8.6</length>
+    <wingspan>10.93</wingspan>
+    <height>2.8</height>
+  </dimensions>
+
+  <!-- MASA (kg) -->
+  <mass>
+    <empty>2800</empty>
+    <fuel>600</fuel>
+    <payload>400</payload>
+  </mass>
+
+  <!-- CENTRO DE GRAVEDAD -->
+  <centerOfGravity x="0.0" y="0.0" z="0.3"/>
+
+  <!-- MOTORES (tiene 2 turbojets J85) -->
+  <engines>
+    <engine id="1">
+      <type>jet</type>
+      <position x="-0.4" y="0.6" z="-1.0"/>
+      <thrust>1290</thrust>
+    </engine>
+    <engine id="2">
+      <type>jet</type>
+      <position x="0.4" y="0.6" z="-1.0"/>
+      <thrust>1290</thrust>
+    </engine>
+  </engines>
+
+  <!-- SUPERFICIES DE CONTROL -->
+  <controlSurfaces>
+    <surface name="left_aileron" type="aileron" factor="1.1" node="left_aileron_node"/>
+    <surface name="right_aileron" type="aileron" factor="1.1" node="right_aileron_node"/>
+    <surface name="elevator" type="elevator" factor="1.0" node="elevator_node"/>
+    <surface name="rudder" type="rudder" factor="1.0" node="rudder_node"/>
+    <surface name="left_flap" type="flap" factor="0.9" node="left_flap_node"/>
+    <surface name="right_flap" type="flap" factor="0.9" node="right_flap_node"/>
+  </controlSurfaces>
+
+  <!-- MODELO DE VUELO -->
+  <flightModel>
+    <liftFactor>1.05</liftFactor>
+    <dragFactor>0.95</dragFactor>
+    <maxSpeed>820</maxSpeed>         <!-- km/h -->
+    <stallSpeed>165</stallSpeed>
+    <maxAltitude>12000</maxAltitude>
+  </flightModel>
+
+  <!-- TREN DE ATERRIZAJE -->
+  <landingGear>
+    <nose>
+      <position x="0.0" y="0.7" z="2.1"/>
+      <retractable>true</retractable>
+      <node>nose_gear_node</node>
+    </nose>
+
+    <left>
+      <position x="-1.2" y="0.6" z="0.5"/>
+      <retractable>true</retractable>
+      <node>left_main_gear_node</node>
+    </left>
+
+    <right>
+      <position x="1.2" y="0.6" z="0.5"/>
+      <retractable>true</retractable>
+      <node>right_main_gear_node</node>
+    </right>
+
+    <animation name="gear">
+      <node>gear_root_node</node>
+      <openRotation axis="x" angle="-90"/>
+      <closeRotation axis="x" angle="0"/>
+      <duration>1.0</duration>
+    </animation>
+  </landingGear>
+
+  <!-- CABINA / CÁMARA -->
+  <cockpit>
+    <pilotSeat x="0.0" y="1.2" z="1.2"/>
+    <camera>
+      <offset x="0.0" y="1.5" z="1.5"/>
+      <fov>78</fov>
+    </camera>
+  </cockpit>
+
+  <!-- EFECTOS -->
+  <effects>
+    <smokeEffect node="smoke_node" intensity="0.0"/>
+  </effects>
+
+</airplane>

@@ -1,0 +1,18 @@
+{
+  "name": "A-37B Dragonfly FAHH",
+  "model": "dragonfly-fahh.glb",
+  "texture": "dragonfly-texture.png",
+  "mass": 6350,
+  "engine": {
+    "type": "jet",
+    "thrust": 5700
+  },
+  "aerodynamics": {
+    "lift": 1.1,
+    "drag": 0.03
+  },
+  "controls": {
+    "flaps": true,
+    "gear": true
+  }
+}
